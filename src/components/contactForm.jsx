@@ -13,8 +13,8 @@ const ContactForm = () => {
     console.log(conFom)
   }
   return (
-    <div className="flex flex-col justify-items-center items-center">
-      <h2 className="">contact me</h2>
+    <div className="flex flex-col justify-items-center items-center ">
+      <h1 className="m-12">contact me</h1>
       <form onSubmit={onSubmit}>
         <div className="">
           <label className="" htmlFor="name">

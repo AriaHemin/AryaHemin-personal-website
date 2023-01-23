@@ -73,16 +73,14 @@ function App() {
           )
         })
       }</div>
-      <div className="flex flex-col justify-items-center items-center" >
+      <div className="flex flex-col justify-items-center items-center my-4 " >
         <div className="p-5" >
           <ContactForm/>
         </div>
         <div className="flex flex-row" >
           <button className="mx-2" >github</button>
           <button className="mx-2">linked in</button>
-          <button className="mx-2">instagram</button>
-          <button className="mx-2">facebook</button>
-          <button className="mx-2">twitter</button>
+
         </div>
       </div>
     </div>
