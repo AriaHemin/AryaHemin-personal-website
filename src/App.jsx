@@ -1,41 +1,44 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProjectCard from "./components/projectCard"
 import ContactForm from "./components/contactForm"
-
+import {initializeApp,} from 'firebase/app'
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  
+} from 'firebase/firestore'
 
 function App() {
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAn99FAujXicyFcTGTjKXYmNveeJQPZmbY",
+    authDomain: "personal-website-2e6c1.firebaseapp.com",
+    projectId: "personal-website-2e6c1",
+    storageBucket: "personal-website-2e6c1.appspot.com",
+    messagingSenderId: "655037834977",
+    appId: "1:655037834977:web:c4ac5c4bacc7cce0e439a0",
+    measurementId: "G-ZL0D2S9NYS"
+  };
+
+  initializeApp(firebaseConfig);
+
+  const db = getFirestore()
+  const colRef = collection(db, 'myProjects')
+  useEffect(()=>{
+    getDocs(colRef)
+      .then((snapshot)=>{
+        let projects = []
+        snapshot.docs.forEach((doc)=>{
+          projects.push({...doc.data(), id: doc.id})
+        })
+        setProjects(projects)
+        console.log(projects)
+      })
+  },[])
+
   const [projects, setProjects] = useState([
-    {
-      name: "arya workout generator",
-      liveLink: "https://arya-workout-generator.vercel.app/",
-      codeLink: "https://github.com/AriaHemin/arya-workout-generator",
-      id: "1"
-    },{
-      name: "react playground",
-      liveLink: "https://react-playground-v0-2.vercel.app/react-playground",
-      codeLink: "https://github.com/AriaHemin/react-playground-v0.2",
-      id: "2"
-    },{
-      name: "vue todo list app",
-      liveLink: "https://vue-todo-list-app.vercel.app/",
-      codeLink: "https://github.com/AriaHemin/vue-todo-list-app",
-      id: "3"
-    },{
-      name: "templator v0.1",
-      liveLink: "https://ariahemin.github.io/the-templator-v0.1/",
-      codeLink: "https://github.com/AriaHemin/the-templator-v0.1",
-      id: "4"
-    },{
-      name: "stop watch",
-      liveLink: "https://ariahemin.github.io/stop-watch/",
-      codeLink: "https://github.com/AriaHemin/stop-watch",
-      id: "5"
-    },{
-      name: "number guesser",
-      liveLink: "https://ariahemin.github.io/numb-guesser-game/",
-      codeLink: "https://github.com/AriaHemin/numb-guesser-game",
-      id: "6"
-    },{
+   {
       name: "rock paper scissors game",
       liveLink: "https://ariahemin.github.io/rock-paper-scissors-game/",
       codeLink: "https://github.com/AriaHemin/rock-paper-scissors-game",
@@ -78,9 +81,16 @@ function App() {
           <ContactForm/>
         </div>
         <div className="flex flex-row" >
-          <button className="mx-2" >github</button>
-          <button className="mx-2">linked in</button>
-
+          <a className="mx-1" href="https://github.com/AriaHemin" >
+              <button>
+                  github   
+              </button>
+          </a>
+          <a className="mx-1" href="https://www.linkedin.com/in/aria-hemin-60b604251/" >
+              <button>
+                  linked in   
+              </button>
+          </a>
         </div>
       </div>
     </div>
