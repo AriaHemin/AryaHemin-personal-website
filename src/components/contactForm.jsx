@@ -13,8 +13,8 @@ const ContactForm = () => {
     console.log(conFom)
   }
   return (
-    <div className="flex flex-col justify-items-center items-center ">
-      <h1 className="m-12">contact me</h1>
+    <div className="text-white bg-black px-10 py-10 flex flex-col justify-items-center items-center ">
+      <h1 className="m-2">contact me</h1>
       <form onSubmit={onSubmit}>
         <div className="">
           <label className="" htmlFor="name">
@@ -34,10 +34,11 @@ const ContactForm = () => {
           </label><br/> 
           <textarea className="text-black" id="message" required />
         </div>
-        <button className="" type="submit">
+        <button className="text-white" type="submit">
           {formStatus}
         </button>
       </form>
+      <footer>my email : ariahemin@gmail.com</footer>
     </div>
   )
 }

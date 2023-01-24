@@ -8,8 +8,13 @@ import {
   getFirestore,
   
 } from 'firebase/firestore'
+import { Modal } from "./components/modal"
+
 
 function App() {
+  const innerComp = <ContactForm/>
+  const [isModalActive, setIsModalActive] = useState(false);
+
 
   const firebaseConfig = {
     apiKey: "AIzaSyAn99FAujXicyFcTGTjKXYmNveeJQPZmbY",
@@ -59,14 +64,24 @@ function App() {
           i work with react.
         </p>
       </div>
-      <div className="p-5" >
-        <p>tools and technology</p>
+      <div className="w-1/2" >  
+      <h1>my journey :</h1>
+        <p  >
+          i finished highschool and i started my coding journey. 
+          i have an intate curiosity for how things works, and so i wanted to learn more about software engineering. 
+          so i started with web development making basic sites. copying one part of popular websites like google search bar and youtube's nav bar.
+          i learned html and css then javascript. i tried react but i couldn't understand a thing ,but vue was easier so after dabbling with vue for a while i picked up react and this time it was easy. 
+        </p>
+      </div>
+      <div className="w-1/2 my-10" >
+        <h1>tool and technology :</h1>
         <ul>
           <li>1. react</li>
-          <li>2. html</li>
-          <li>3. css</li>
-          <li>4. tailwind</li>
-          <li>5. git and github</li>
+          <li>2. vue</li>
+          <li>3. html</li>
+          <li>4. css</li>
+          <li>5. tailwind</li>
+          <li>6. git and github</li>
         </ul>
       </div>
       <div className="grid grid-cols-3 justify-items-stretch items-center px-10 " >{
@@ -77,16 +92,19 @@ function App() {
         })
       }</div>
       <div className="flex flex-col justify-items-center items-center my-4 " >
-        <div className="p-5" >
-          <ContactForm/>
-        </div>
         <div className="flex flex-row" >
-          <a className="mx-1" href="https://github.com/AriaHemin" >
+          <div>
+            <button onClick={()=>{setIsModalActive(true)}} >
+              email
+            </button>
+            <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive} innerComp={innerComp} />
+          </div>
+          <a className="" href="https://github.com/AriaHemin" >
               <button>
                   github   
               </button>
           </a>
-          <a className="mx-1" href="https://www.linkedin.com/in/aria-hemin-60b604251/" >
+          <a className="" href="https://www.linkedin.com/in/aria-hemin-60b604251/" >
               <button>
                   linked in   
               </button>

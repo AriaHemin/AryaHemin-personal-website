@@ -1,8 +1,9 @@
 import { Modal } from "./modal";
 import { useState } from "react";
+import ProjectDetailPage from "./projectDetailPage";
 
 function ProjectCard(props){
-    const innerComp = props.project.detail
+    const innerComp = <ProjectDetailPage detail={props.project.detail}/>
     const [isModalActive, setIsModalActive] = useState(false);
     return(
         <div>
@@ -24,7 +25,7 @@ function ProjectCard(props){
                 </div>
             </div>
         </div>
-            <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive} innerComp={innerComp} />
+        <Modal isModalActive={isModalActive} setIsModalActive={setIsModalActive} innerComp={innerComp} />
         </div>
     )
 }
