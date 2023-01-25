@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProjectDetailPage from "./projectDetailPage";
 
 function ProjectCard(props){
-    const innerComp = <ProjectDetailPage detail={props.project.detail}/>
+    const innerComp = <ProjectDetailPage project={props.project}/>
     const [isModalActive, setIsModalActive] = useState(false);
     return(
         <div>
