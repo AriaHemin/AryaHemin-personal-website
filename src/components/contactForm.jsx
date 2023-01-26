@@ -1,45 +1,31 @@
-import React from 'react'
-const ContactForm = () => {
-  const [formStatus, setFormStatus] = React.useState('Send')
-  const onSubmit = (e) => {
-    e.preventDefault()
-    setFormStatus('Submitting...')
-    const { name, email, message } = e.target.elements
-    let conFom = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    }
-    console.log(conFom)
-  }
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+export default function ContactForm (){
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_44dvuwj', 'template_fluyuqm', form.current, 'MYcLSht2bA80m_jsB')
+      .then((result) => {
+          console.log(result.text);
+          e.target.reset()
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
   return (
-    <div className="text-white bg-black px-10 py-10 flex flex-col justify-items-center items-center ">
-      <h1 className="m-2">contact me</h1>
-      <form onSubmit={onSubmit}>
-        <div className="">
-          <label className="" htmlFor="name">
-            Name
-          </label><br/>
-          <input className="text-black" type="text" id="name" required />
-        </div>
-        <div className="">
-          <label className="" htmlFor="email">
-            Email
-          </label><br/>
-          <input className="text-black" type="email" id="email" required />
-        </div>
-        <div className="">
-          <label className="form-label" htmlFor="message">
-            Message
-          </label><br/> 
-          <textarea className="text-black" id="message" required />
-        </div>
-        <button className="text-white" type="submit">
-          {formStatus}
-        </button>
-      </form>
-      <footer>my email : ariahemin@gmail.com</footer>
-    </div>
-  )
-}
-export default ContactForm
+    <form className='flex flex-col px-10 py-8 bg-black' ref={form} onSubmit={sendEmail}>
+      <label className='text-white' >Name</label>
+      <input  className='p-1 rounded' type="text" name="user_name" />
+      <label className='text-white' >Email</label>
+      <input className='p-1 rounded' type="email" name="user_email" />
+      <label className='text-white' >Message</label>
+      <textarea className='p-1 rounded' name="message" />
+      <input className='text-white my-3 font-bold border-2 rounded p-2 bg-[#1a1a1a] '  type="submit" value="Send" />
+      <p className='font-bold text-white' >my email : ariahemin@gmail.com</p>
+    </form>
+  );
+};
