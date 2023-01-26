@@ -38,7 +38,6 @@ function App() {
           projects.push({...doc.data(), id: doc.id})
         })
         setProjects(projects)
-        console.log(projects)
       })
   },[])
 

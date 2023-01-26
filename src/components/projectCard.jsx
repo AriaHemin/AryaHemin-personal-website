@@ -3,7 +3,7 @@ import { useState } from "react";
 import ProjectDetailPage from "./projectDetailPage";
 
 function ProjectCard(props){
-    const innerComp = <ProjectDetailPage project={props.project}/>
+    const innerComp = <ProjectDetailPage className="bg-stone-900"  project={props.project}/>
     const [isModalActive, setIsModalActive] = useState(false);
     return(
         <div>
