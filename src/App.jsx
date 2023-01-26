@@ -42,16 +42,7 @@ function App() {
       })
   },[])
 
-  const [projects, setProjects] = useState([
-   {
-      name: "rock paper scissors game",
-      liveLink: "https://ariahemin.github.io/rock-paper-scissors-game/",
-      codeLink: "https://github.com/AriaHemin/rock-paper-scissors-game",
-      id: "7"
-    }
-
-
-  ])
+  const [projects, setProjects] = useState([])
   
   return (
     <div className="flex flex-col justify-items-center items-center " >
@@ -64,7 +55,7 @@ function App() {
           i work with react.
         </p>
       </div>
-      <div className="w-1/2" >  
+      <div className="sm:w-1/2" >  
       <h1>my journey :</h1>
         <p  >
           i finished highschool and i started my coding journey. 
@@ -73,7 +64,7 @@ function App() {
           i learned html and css then javascript. i tried react but i couldn't understand a thing ,but vue was easier so after dabbling with vue for a while i picked up react and this time it was easy. 
         </p>
       </div>
-      <div className="w-1/2 my-10" >
+      <div className=" w-screen sm:w-1/2 my-10" >
         <h1>tool and technology :</h1>
         <ul>
           <li>1. react</li>
@@ -84,7 +75,7 @@ function App() {
           <li>6. git and github</li>
         </ul>
       </div>
-      <div className="grid grid-cols-3 justify-items-stretch items-center px-10 " >{
+      <div className="grid sm:grid-cols-3 justify-items-stretch items-center sm:px-10 " >{
         projects.map((project)=>{
           return(
             <ProjectCard project={project} key={project.id}/>
